@@ -1,0 +1,16 @@
+{
+	"name": "blushme/core"
+	,"version": "0.0.1"
+	,"description": "A custom module for blushme.se (Magento 2)"
+	,"type": "magento2-module"
+	,"homepage": "https://github.com/blushme/core"
+	,"license": "MIT"
+	,"authors": [{
+		"name": "Dmitry Fedyuk"
+		,"email": "admin@mage2.pro"
+		,"homepage": "https://mage2.pro/users/dmitry_fedyuk"
+		,"role": "Developer"
+	}]
+	,"autoload": {"files": ["registration.php"], "psr-4": {"BlushMe\\Core\\": ""}}
+	,"keywords": ["Magento 2"]
+}
