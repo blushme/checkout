@@ -3,7 +3,8 @@
 1) "Enforce the `1column` page layout (with the gereric header and footer) for the Klarna Checkout page":
 https://github.com/blushme/core/issues/2
 2) https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Theme/view/frontend/page_layout/1column.xml#L10-L14
-3) vendor/klarna/module-kco/view/frontend/page_layout/klarnacheckout.xml -->
+3) vendor/klarna/module-kco/view/frontend/page_layout/klarnacheckout.xml
+4) https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/layout-extend.html -->
 <layout
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_layout.xsd'
