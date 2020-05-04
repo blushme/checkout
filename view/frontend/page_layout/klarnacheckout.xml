@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<!-- 2020-05-04 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+1) "Enforce the `1column` page layout (with the gereric header and footer) for the Klarna Checkout page":
+https://github.com/blushme/core/issues/2
+2) https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Theme/view/frontend/page_layout/1column.xml#L10-L14
+3) vendor/klarna/module-kco/view/frontend/page_layout/klarnacheckout.xml -->
+<layout
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_layout.xsd'
+>
+	<referenceContainer name='page.wrapper'>
+		<container
+			as='header_container'
+			before='main.content'
+			htmlClass='page-header'
+			htmlTag='header'
+			label='Page Header Container'
+			name='header.container'
+		/>
+		<container after='header.container' as='page_top' label='After Page Header' name='page.top'/>
+		<container
+			as='footer'
+			before='before.body.end'
+			htmlClass='page-footer'
+			htmlTag='footer'
+			label='Page Footer Container'
+			name='footer-container'
+		/>
+	</referenceContainer>
+</layout>
