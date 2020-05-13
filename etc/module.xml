@@ -3,5 +3,11 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='urn:magento:framework:Module/etc/module.xsd'
 >
-	<module name='BlushMe_Core' setup_version='0.0.1'/>
+	<module name='BlushMe_Core' setup_version='0.0.1'>
+		<sequence>
+<!-- 2020-05-14
+"Remove the second (right) column from the Klarna Checkout page": https://github.com/blushme/core/issues/3 -->
+			<module name='Magento_Checkout'/>
+		</sequence>
+	</module>
 </config>
