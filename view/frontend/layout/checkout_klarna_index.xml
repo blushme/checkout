@@ -71,17 +71,6 @@
 							label='Cart Summary Container'
 							name='cart.summary'
 						>
-							<block
-								class='Magento\Framework\View\Element\Template'
-								name='checkout.cart.summary.title'
-								template='Magento_Theme::text.phtml'
-							>
-								<arguments>
-									<argument translate='true' name='text' xsi:type='string'>Summary</argument>
-									<argument name='tag' xsi:type='string'>strong</argument>
-									<argument name='css_class' xsi:type='string'>summary title</argument>
-								</arguments>
-							</block>
 							<container name='checkout.cart.totals.container' as='totals' label='Shopping Cart Totals'>
 								<block class='Magento\Checkout\Block\Cart\Totals' name='checkout.cart.totals' template='Magento_Checkout::cart/totals.phtml'>
 									<arguments>
