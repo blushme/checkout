@@ -26,6 +26,14 @@
 				</argument>
 			</arguments>
 		</referenceBlock>
+		<referenceBlock name='page.main.title'>
+			<block
+				as='coupon'
+				class='Magento\Checkout\Block\Cart\Coupon'
+				name='checkout.cart.coupon'
+				template='Magento_Checkout::cart/coupon.phtml'
+			/>
+		</referenceBlock>
 		<referenceContainer name='content'>
 			<block
 				cacheable='false'
@@ -107,12 +115,6 @@ https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view
 									</arguments>
 								</block>
 							</container>
-							<block
-								as='coupon'
-								class='Magento\Checkout\Block\Cart\Coupon'
-								name='checkout.cart.coupon'
-								template='Magento_Checkout::cart/coupon.phtml'
-							/>
 						</container>
 					</container>
 					<block
