@@ -59,6 +59,14 @@
 								name='checkout.cart.item.renderers'
 								as='renderer.list'
 							/>
+<!-- 2020-05-20
+The block is not related to the standard actions: «Continue shopping» / «Clear Shopping Cart» / «Update Shopping Cart».
+The block is used to render custom actions (added by third-party modules):
+	<?= $block->getChildHtml('checkout.cart.order.actions') ?>
+https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view/frontend/templates/cart/form.phtml#L78
+The standard actions are rendered by the code:
+https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view/frontend/templates/cart/form.phtml#L51-L76
+-->
 							<block
 								class='Magento\Framework\View\Element\Text\ListText'
 								name='checkout.cart.order.actions'
