@@ -34,7 +34,7 @@
 				template='Magento_Checkout::cart.phtml'
 			>
 				<container name='checkout.cart.items' as='with-items'>
-					<container name='checkout.cart.container' htmlTag='div' htmlClass='cart-container' before='-'>
+					<container name='checkout.cart.container' htmlTag='div' htmlClass='cart-container'>
 						<container
 							name='checkout.cart.form.before'
 							as='form_before'
@@ -43,14 +43,36 @@
 							htmlClass='rewards'
 						/>
 						<container
-							after='-'
+							as='checkout_cart_widget'
+							label='Shopping Cart Items After'
+							name='checkout.cart.widget'
+						/>
+<!-- 2020-05-20 The block with cart items -->						
+						<block
+							after='cart.summary'
+							as='cart-items'
+							class='Magento\Checkout\Block\Cart\Grid'
+							name='checkout.cart.form'
+							template='Magento_Checkout::cart/form.phtml'
+						>
+							<block
+								class='Magento\Framework\View\Element\RendererList'
+								name='checkout.cart.item.renderers'
+								as='renderer.list'
+							/>
+							<block
+								class='Magento\Framework\View\Element\Text\ListText'
+								name='checkout.cart.order.actions'
+							/>
+						</block>
+<!-- 2020-05-20 The block with cart totals -->
+						<container
 							htmlClass='cart-summary'
 							htmlTag='div'
 							label='Cart Summary Container'
 							name='cart.summary'
 						>
 							<block
-								before='-'
 								class='Magento\Framework\View\Element\Template'
 								name='checkout.cart.summary.title'
 								template='Magento_Theme::text.phtml'
@@ -110,28 +132,6 @@
 								template='Magento_Checkout::cart/coupon.phtml'
 							/>
 						</container>
-						<block
-							after='cart.summary'
-							as='cart-items'
-							class='Magento\Checkout\Block\Cart\Grid'
-							name='checkout.cart.form'
-							template='Magento_Checkout::cart/form.phtml'
-						>
-							<block
-								class='Magento\Framework\View\Element\RendererList'
-								name='checkout.cart.item.renderers'
-								as='renderer.list'
-							/>
-							<block
-								class='Magento\Framework\View\Element\Text\ListText'
-								name='checkout.cart.order.actions'
-							/>
-						</block>
-						<container
-							as='checkout_cart_widget'
-							label='Shopping Cart Items After'
-							name='checkout.cart.widget'
-						/>
 					</container>
 					<block
 						after='-'
