@@ -1,14 +1,18 @@
 // 2020-05-19
-//@import '_seavus_klarna';
 .checkout-klarna-index {
-	#maincontent {padding-top: 0;}
-	h1.page-title {
-		margin: 0.5em 0;
-		text-align: center;
-		width: 100%;
-	}
-	.opc-wrapper {
-		float: none;
-		width: auto;
+	#maincontent {
+		padding-top: 0;
+		h1.page-title {
+			margin: 0.5em 0;
+			text-align: center;
+			width: 100%;
+		}
+		#form-validate {
+			> .actions {display: none;}
+		}
+		.opc-wrapper {
+			float: none;
+			width: auto;
+		}
 	}
 }
