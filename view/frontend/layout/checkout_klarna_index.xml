@@ -4,6 +4,8 @@
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
 >
 	<body>
+<!-- 2020-05-19 https://magento.stackexchange.com/a/104065 -->
+		<attribute name='class' value='page-layout-1column'/>
 <!-- 2020-05-14
 "Remove the second (right) column from the Klarna Checkout page": https://github.com/blushme/core/issues/3 -->
 		<referenceBlock name='checkout.root'>
