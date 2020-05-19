@@ -49,7 +49,6 @@
 						/>
 <!-- 2020-05-20 The block with cart items -->						
 						<block
-							after='cart.summary'
 							as='cart-items'
 							class='Magento\Checkout\Block\Cart\Grid'
 							name='checkout.cart.form'
