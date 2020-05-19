@@ -16,8 +16,12 @@
 			// It hides the standard cart actions: «Continue shopping» / «Clear Shopping Cart» / «Update Shopping Cart»:
 			// https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view/frontend/templates/cart/form.phtml#L51-L76
 			> .actions {display: none;}
-			table#shopping-cart-table > thead {display: none;}
+			table#shopping-cart-table {
+				> thead {display: none;}
+				.old-price {text-decoration: line-through;}
+			}
 		}
+		.cart-totals {border: 0;}
 		.opc-wrapper {
 			float: none;
 			padding-right: 0;
