@@ -2,10 +2,49 @@
 .checkout-klarna-index {
 	#maincontent {
 		padding-top: 0;
-		h1.page-title {
-			margin: 0.5em 0;
-			text-align: center;
-			width: 100%;
+		> .page-title-wrapper {
+			> h1.page-title {
+				display: inline-block;
+				font-size: 30px;
+				//margin: 0.5em 0;
+				//text-align: center;
+				//width: 100%;
+			}
+			> #block-discount {
+				> .content {
+					background: #fff;
+					box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.35);
+					display: block;
+					margin-bottom: 0;
+					margin-left: -1px;
+					margin-right: auto;
+					margin-top: 0;
+					padding: 20px;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					top: 80%;
+					z-index: 99999;
+				}
+				> .title {
+					cursor: pointer;
+					margin: 0;
+					padding: 0;
+					position: absolute;
+					right: 0;
+					text-align: right;
+					top: 50%;
+					transform: translateY(-50%);
+					z-index: 9;
+					> #block-discount-heading {
+						color: #3c3c3b;
+						font-size: 1.6rem;
+						font-weight: 700;
+						margin: 0;
+						text-transform: none;
+					}
+				}
+			}
 		}
 		.cart-summary {float: none; width: initial;}
 		#form-validate.form-cart {
