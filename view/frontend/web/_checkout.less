@@ -57,7 +57,7 @@
 		}
 		.column.main {
 			padding: 0;
-			.cart-summary {float: none; width: initial;}
+			.cart-summary {background: initial; float: none; width: initial;}
 			#form-validate.form-cart {
 				float: none;
 				padding-right: 0;
@@ -68,10 +68,20 @@
 				> .actions {display: none;}
 				table#shopping-cart-table {
 					> thead {display: none;}
+					> tbody {
+						border-bottom: 0 !important;
+						border-top: 1px solid #E5E5E5;
+						display: table;
+						width: 100%;
+						&:first-of-type {border-top: 1px solid #ffffff !important;}
+					}
 					.old-price {text-decoration: line-through;}
 				}
 			}
-			.cart-totals {border: 0;}
+			.cart-totals {
+				border: 0;
+				table.totals {border: 0;}
+			}
 			.opc-wrapper {
 				float: none;
 				padding-right: 0;
