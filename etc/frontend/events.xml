@@ -8,8 +8,8 @@
 https://github.com/blushme/core/issues/4 -->
 	<event name='controller_action_predispatch_checkout_cart_index'>
 		<observer
-			instance='BlushMe\Core\Observer\ControllerActionPredispatch\CheckoutCartIndex'
-			name='BlushMe\Core\Observer\ControllerActionPredispatch\CheckoutCartIndex'
+			instance='BlushMe\Checkout\Observer\ControllerActionPredispatch\CheckoutCartIndex'
+			name='BlushMe\Checkout\Observer\ControllerActionPredispatch\CheckoutCartIndex'
 		/>
 	</event>
 </config>

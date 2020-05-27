@@ -1,5 +1,5 @@
 <?php
-namespace BlushMe\Core\Observer\ControllerActionPredispatch;
+namespace BlushMe\Checkout\Observer\ControllerActionPredispatch;
 use Magento\Framework\Event\Observer as O;
 use Magento\Framework\Event\ObserverInterface;
 // 2020-05-27
