@@ -2,85 +2,11 @@
 .checkout-klarna-index {
 	#maincontent {
 		padding-top: 0;
-		> .page-title-wrapper {
-			color: #3c3c3b;
-			margin: 0px auto;
-			//max-width: 919px;
-			min-height: 70px;
-			padding: 0;
-			position: relative;
-			text-align: center;
-			> h1.page-title {
-				color: #3c3c3b;
-				display: inline-block;
-				font-size: 30px;
-				font-weight: 700;
-				line-height: 70px;
-				margin: 0 auto;
-				text-align: center;
-			}
-			> #block-discount {
-				> .content {
-					background: #fff;
-					box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.35);
-					display: block;
-					margin-bottom: 0;
-					margin-left: -1px;
-					margin-right: auto;
-					margin-top: 0;
-					padding: 20px;
-					position: absolute;
-					right: 0;
-					text-align: center;
-					top: 80%;
-					z-index: 99999;
-				}
-				> .title {
-					cursor: pointer;
-					margin: 0;
-					padding: 0;
-					position: absolute;
-					right: 0;
-					text-align: right;
-					top: 50%;
-					transform: translateY(-50%);
-					z-index: 9;
-					> #block-discount-heading {
-						color: #3c3c3b;
-						font-size: 1.6rem;
-						font-weight: 700;
-						margin: 0;
-						text-transform: none;
-					}
-				}
-			}
-		}
+		@import '_title';
 		.column.main {
 			padding: 0;
 			.cart-summary {background: initial; float: none; width: initial;}
-			#form-validate.form-cart {
-				float: none;
-				padding-right: 0;
-				width: initial;
-				// 2020-05-20
-				// It hides the standard cart actions: «Continue shopping» / «Clear Shopping Cart» / «Update Shopping Cart»:
-				// https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view/frontend/templates/cart/form.phtml#L51-L76
-				> .actions {display: none;}
-				> .cart.table-wrapper {
-					padding: 0;
-					table#shopping-cart-table {
-						> thead {display: none;}
-						> tbody {
-							border-bottom: 0 !important;
-							border-top: 1px solid #E5E5E5;
-							display: table;
-							width: 100%;
-							&:first-of-type {border-top: 1px solid #ffffff !important;}
-						}
-						.old-price {text-decoration: line-through;}
-					}
-				}
-			}
+			@import '_cart';
 			.cart-totals {
 				border: 0;
 				table.totals {border: 0;}

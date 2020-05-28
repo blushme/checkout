@@ -1,0 +1,44 @@
+// 2020-05-27
+@i: '../BlushMe_Checkout/i/';
+#form-validate.form-cart {
+	float: none;
+	padding-right: 0;
+	width: initial;
+	// 2020-05-20
+	// It hides the standard cart actions: «Continue shopping» / «Clear Shopping Cart» / «Update Shopping Cart»:
+	// https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Checkout/view/frontend/templates/cart/form.phtml#L51-L76
+	> .actions {display: none;}
+	> .cart.table-wrapper {
+		padding: 0;
+		table#shopping-cart-table {
+			> thead {display: none;}
+			> tbody {
+				border-bottom: 0 !important;
+				border-top: 1px solid #E5E5E5;
+				display: table;
+				width: 100%;
+				&:first-of-type {border-top: 1px solid #ffffff !important;}
+				a.action-delete {
+					color: #3c3c3b; position: relative;
+					::before {
+						// 2020-05-28
+						// Chrome still does not support `mask` without the `-webkit-` prefix:
+						// https://caniuse.com/#feat=css-masks
+						-webkit-mask-position: center;
+						-webkit-mask-size: 14px;
+						-webkit-mask: url("@{i}cross.svg") no-repeat;
+						background-color: #3c3c3b;
+						content: '';
+						height: 14px;
+						mask-position: center;
+						mask-size: 14px;
+						mask: url("@{i}cross.svg") no-repeat;
+						vertical-align: middle;
+						width: 24px;
+					}
+				}
+			}
+			.old-price {text-decoration: line-through;}
+		}
+	}
+}
