@@ -24,15 +24,17 @@
 						// 2020-05-28
 						// Chrome still does not support `mask` without the `-webkit-` prefix:
 						// https://caniuse.com/#feat=css-masks
+						-webkit-mask-image: url("@{i}cross.svg");
 						-webkit-mask-position: center;
+						-webkit-mask-repeat: no-repeat;
 						-webkit-mask-size: 14px;
-						-webkit-mask: url("@{i}cross.svg") no-repeat;
 						background-color: #3c3c3b;
 						content: '';
 						height: 14px;
+						mask-image: url("@{i}cross.svg");
 						mask-position: center;
+						mask-repeat: no-repeat;
 						mask-size: 14px;
-						mask: url("@{i}cross.svg") no-repeat;
 						vertical-align: middle;
 						width: 24px;
 					}
