@@ -1,0 +1,31 @@
+// 2020-05-29
+&.delete {
+	padding-right: 20px;
+	&.delete-special-price {
+		padding-right: 30px !important;
+	}
+	> .actions-toolbar {
+		min-height: auto; padding-bottom: 0; text-align: right;
+		> a.action-delete {
+			color: #3c3c3b; position: relative;
+			&:before {
+				// 2020-05-28
+				// Chrome still does not support `mask` without the `-webkit-` prefix:
+				// https://caniuse.com/#feat=css-masks
+				-webkit-mask-image: url("@{i}cross.svg");
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-size: 14px;
+				background-color: #3c3c3b;
+				content: '';
+				height: 14px;
+				mask-image: url("@{i}cross.svg");
+				mask-position: center;
+				mask-repeat: no-repeat;
+				mask-size: 14px;
+				vertical-align: middle;
+				width: 24px;
+			}
+		}
+	}
+}
