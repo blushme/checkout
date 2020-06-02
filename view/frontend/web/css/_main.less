@@ -5,7 +5,19 @@
 		@import '_title';
 		.column.main {
 			padding: 0;
-			.cart-summary {background: initial; float: none; width: initial;}
+			.cart-summary {
+				background: initial;
+				border-bottom: 1px solid rgb(225, 225, 225);
+				border-top: 1px solid rgb(225, 225, 225);
+				float: none;
+				margin-bottom: 0;
+				padding-bottom: 0;
+				width: initial;
+				> #cart-totals {
+					padding-top: 0;
+					table.totals {td, th {border: 0;}}
+				}
+			}
 			@import '_cart';
 			.cart-totals {
 				border: 0;
