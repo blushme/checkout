@@ -1,8 +1,9 @@
 // 2020-06-03
 &.item {
 	display: table-cell;
-	padding-left: 1%;
-	width: 47.5%;
+	width: 48.5%;
+	@media (min-width: 768px) {padding: 20px 8px 20px 0;}
+	@media (max-width: 767px) {width: auto !important;}
 	> a.product-item-photo {
 		float: left;
 		padding-left: 0px;
