@@ -34,12 +34,15 @@
 			position: absolute;
 			right: 20px;
 			text-align: right;
-			.price {
-				font-size: 1.4rem;
-				color: rgb(60, 60, 59);
-				font-weight: 700;
-				letter-spacing: 1px;
-				&.special {color: rgb(195, 57, 57) !important;}
+			.cart-price {
+				> .old-price, > .price {
+					color: rgb(60, 60, 59);
+					font-size: 1.4rem;
+					font-weight: 700;
+					letter-spacing: 1px;
+				}
+				> .old-price {display: inline-block; text-decoration: line-through;}
+				> .price.special {color: rgb(195, 57, 57) !important;}
 			}
 		}
 	}
