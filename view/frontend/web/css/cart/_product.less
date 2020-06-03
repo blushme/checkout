@@ -10,6 +10,14 @@
 		position: inherit;
 		top: auto;
 		width: auto;
+		@media (max-width: 767px) {
+			float: none;
+			left: 0px;
+			max-width: 100%;
+			padding-left: 0px;
+			position: absolute;
+			width: 100%;
+		}
 	}
 	> .product-item-details {
 		float: left;
@@ -18,6 +26,11 @@
 		padding-top: 7px;
 		vertical-align: middle;
 		width: 300px;
+		@media (max-width: 767px) {
+			padding-left: 10px !important;
+			padding-top: 0px !important;
+			width: auto !important;
+		}
 		> .brand {
 			font-size: 14px;
 			line-height: 22px;
