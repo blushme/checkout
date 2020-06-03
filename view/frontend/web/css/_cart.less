@@ -10,7 +10,17 @@
 	> .actions {display: none;}
 	> .cart.table-wrapper {
 		padding: 0;
-		@media (max-width: 767px) {.tablet-mobile-show {display: block !important;}  }
+		@media (max-width: 767px) {
+			.tablet-mobile-show {
+				display: block !important;
+				.label-qty {
+					display: inline-block;
+					font-size: 1.1em;
+					margin-right: 5px;
+					text-transform: uppercase;
+				}
+			}
+		}
 		table#shopping-cart-table {
 			> thead {display: none;}
 			> tbody {
