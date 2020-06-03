@@ -21,27 +21,7 @@
 				td {
 					padding-bottom: 10px; padding-top: 10px; vertical-align: middle;
 					@import 'cart/_delete';
-					&.item {
-						display: table-cell;
-						padding-left: 1%;
-						width: 47.5%;
-						> .product-item-details {
-							padding: 7px 0;
-							> .brand {
-								font-size: 14px;
-								line-height: 22px;
-								text-transform: uppercase;
-							}
-							> .product_explanation {min-height: 32px;}
-							> .product-item-name {
-								font-size: 1.3em;
-								font-weight: 700;
-								margin: 0;
-								max-width: 400px;
-								text-transform: uppercase;
-							}
-						}
-					}
+					@import 'cart/_product';
 					@import 'cart/_qty';
 					&.subtotal {
 						padding-right: 50px;
