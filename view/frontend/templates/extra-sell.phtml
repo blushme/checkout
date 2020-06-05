@@ -3,6 +3,7 @@ use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** 
 use Codazon\ProductLabel\Helper\Data as CodazonH;
 use Magento\Catalog\Model\Product as P;
 use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
+use Seavus\Products\Block\Product\View as ProductB;
 if ($count = $b->items()->count()) { /** @var int $count */
 	$codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 	?>
@@ -45,9 +46,9 @@ if ($count = $b->items()->count()) { /** @var int $count */
 												title='<?= $b->escapeHtml($_item->getName()) ?>'
 											><?= $b->escapeHtml($_item->getName()) ?></a>
 										</strong>
-										<?= $this->getLayout()->createBlock("Seavus\Products\Block\Product\View")->setTemplate("Seavus_Products::product/view/brand.phtml")->setProduct($_item)->setExcludeBrandUrl(true)->toHtml(); ?>
+										<?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/brand.phtml")->setProduct($_item)->setExcludeBrandUrl(true)->toHtml(); ?>
 										<div class="raiting-content-grid product-explanation-attribute">
-									  <?= $this->getLayout()->createBlock("Seavus\Products\Block\Product\View")->setTemplate("Seavus_Products::product/view/product_explanation.phtml")->setProduct($_item)->toHtml(); ?>
+									  <?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/product_explanation.phtml")->setProduct($_item)->toHtml(); ?>
 									</div>
 									</div>
 									 <div class="raiting-content-grid">
@@ -56,7 +57,7 @@ if ($count = $b->items()->count()) { /** @var int $count */
 
 									<?= $b->getProductPrice($_item); ?>
 
-									<?= $this->getLayout()->createBlock("Seavus\Products\Block\Product\View")->setTemplate("Seavus_Products::product/view/recommended_price.phtml")->setProduct($_item)->toHtml(); ?>
+									<?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/recommended_price.phtml")->setProduct($_item)->toHtml(); ?>
 
 									<div class="add-tocart-button">
 										<?php if ($_item->isSaleable()){ ?>
