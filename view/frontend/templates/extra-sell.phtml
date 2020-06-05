@@ -1,17 +1,6 @@
  <?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// @codingStandardsIgnoreFile
-
 /* @var $block \Magento\Catalog\Block\Product\AbstractProduct */
-use Magento\Framework\App\Action\Action;
 $label_helper = $this->helper("Codazon\ProductLabel\Helper\Data");  // CUSTOM CODE
-?>
-
-<?php
 switch ($type = $block->getType()) {   
     case 'custom-extrasell': // CUSTOM CODE
     	/** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
