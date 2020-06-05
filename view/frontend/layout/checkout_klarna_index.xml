@@ -129,6 +129,20 @@ https://github.com/blushme/site/issues/74 -->
 							</container>
 						</container>
 					</container>
+<!-- 2020-06-04
+"Reimplement the «Aktuella erbjudanden» block": https://github.com/blushme/checkout/issues/6
+I have ported the code from here: https://github.com/blushme/site/blob/2020-04-28-before-Klarna-upgrade/app/code/Seavus/Klarna/view/frontend/layout/klarna_checkout_index.xml#L24-L28
+-->
+					<block
+						after='-'
+						class='BlushMe\Checkout\Block\ExtraSell'
+						name='checkout.extra.sell'
+						template='BlushMe_Checkout::extra-sell.phtml'
+					>
+						<arguments>
+							<argument name='type' xsi:type='string'>custom-extrasell</argument>
+						</arguments>
+					</block>
 					<block
 						after='-'
 						class='Magento\Checkout\Block\Cart\Crosssell'
