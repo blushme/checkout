@@ -16,8 +16,6 @@ class ExtraSell extends \Magento\Catalog\Block\Product\AbstractProduct {
 		parent::__construct($context, $data);			
 	}
 	
-	function getExtraSellDescription(){return df_cfg("klarna/settings/extra_sell_description");}
-	
 	function getExtraSellProducts(){
 		$products = array();
 		$extra_sell_products = df_cfg("klarna/settings/extra_sell_products");
