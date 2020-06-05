@@ -138,33 +138,7 @@ I have ported the code from here: https://github.com/blushme/site/blob/2020-04-2
 						class='BlushMe\Checkout\Block\ExtraSell'
 						name='checkout.extra.sell'
 						template='BlushMe_Checkout::extra-sell.phtml'
-					>
-						<arguments>
-							<argument name='type' xsi:type='string'>custom-extrasell</argument>
-						</arguments>
-					</block>
-					<block
-						after='-'
-						class='Magento\Checkout\Block\Cart\Crosssell'
-						ifconfig='checkout/cart/crosssell_enabled'
-						name='checkout.cart.crosssell'
-						template='Magento_Catalog::product/list/items.phtml'
-					>
-						<arguments>
-							<argument name='type' xsi:type='string'>crosssell</argument>
-						</arguments>
-						<block
-							as='addto'
-							class='Magento\Catalog\Block\Product\ProductList\Item\Container'
-							name='crosssell.product.addto'
-						>
-							<block
-								class='Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare'
-								name='crosssell.product.addto.compare' as='compare'
-								template='Magento_Catalog::product/list/addto/compare.phtml'
-							/>
-						</block>
-					</block>
+					/>
 				</container>
 				<container name='checkout.cart.noitems' as='no-items'>
 					<block

@@ -1,29 +1,19 @@
  <?php
 use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** @var B $b */
 $label_helper = $this->helper("Codazon\ProductLabel\Helper\Data");  // CUSTOM CODE
-switch ($type = $b->getType()) {   
-    case 'custom-extrasell': // CUSTOM CODE
-    	/** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
-    	$extra_sell_products = $b->getExtraSellProducts();
-    	$exist = count($extra_sell_products) > 0 ? true : false; 
-    	if ($exist) {
-    		$type = 'related';
-    		$class = $type;
-    		
-    		$image = 'related_products_list';
-    		$image_hover = 'related_products_list_hover';
-    		$description = $b->getExtraSellDescription();
-    		$items = $extra_sell_products;
-    	}
-    break;
-    
-    case 'other':
-    break;
+/** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
+$extra_sell_products = $b->getExtraSellProducts();
+$exist = count($extra_sell_products) > 0 ? true : false;
+if ($exist) {
+	$type = 'related';
+	$class = $type;
+
+	$image = 'related_products_list';
+	$image_hover = 'related_products_list_hover';
+	$description = $b->getExtraSellDescription();
+	$items = $extra_sell_products;
 }
-
-?>
-
-<?php if ($exist): ?>
+if ($exist): ?>
 <div class="cross-sell-products-container klarna-extra-sell-products">
 	<div class="block <?= $class; ?>">
     	<div class="block-title title">
