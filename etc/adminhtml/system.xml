@@ -1,41 +1,41 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-    <system>
-        <tab id="seavus" translate="label" sortOrder="200">
-            <label>Seavus</label>
-        </tab>
-        <section id="klarna" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+<?xml version='1.0'?>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='urn:magento:module:Magento_Config:etc/system_file.xsd'>
+	<system>
+		<tab id='seavus' translate='label' sortOrder='200'>
+			<label>Seavus</label>
+		</tab>
+		<section id='klarna' translate='label' sortOrder='110' showInDefault='1' showInWebsite='1' showInStore='1'>
 			<class>separator-top</class>           
-            <label>Klarna Checkout</label>
-            <tab>seavus</tab>
-            <resource>Seavus_Klarna::config_klarna</resource>
-            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                <label>Settings</label>
-                <hide_in_single_store_mode>0</hide_in_single_store_mode>
-                <field id="extra_sell_status" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
-                     <label>Extra Sell Enabled</label>
-                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>  
-                <field id="extra_sell_title" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
-                     <label>Extra Sell Title</label>
-                     <depends>
-                        <field id="*/*/extra_sell_status">1</field>
-                     </depends>
-                </field> 
-                <field id="extra_sell_description" translate="label" type="editor" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0">
-                     <label>Extra Sell Description</label>
-                     <frontend_model>Seavus\Products\Block\Adminhtml\System\Config\Editor</frontend_model>
-                     <depends>
-                        <field id="*/*/extra_sell_status">1</field>
-                    </depends>
-                </field>
-                 <field id="extra_sell_products" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="0">
-                     <label>Extra Sell Products</label>
-                     <depends>
-                        <field id="*/*/extra_sell_status">1</field>
-                     </depends>
-                </field>
-            </group>
-        </section>
-    </system>
+			<label>Klarna Checkout</label>
+			<tab>seavus</tab>
+			<resource>Seavus_Klarna::config_klarna</resource>
+			<group id='settings' translate='label' type='text' sortOrder='10' showInDefault='1' showInWebsite='1' showInStore='0'>
+				<label>Settings</label>
+				<hide_in_single_store_mode>0</hide_in_single_store_mode>
+				<field id='extra_sell_status' translate='label' type='select' sortOrder='5' showInDefault='1' showInWebsite='1' showInStore='0'>
+					 <label>Extra Sell Enabled</label>
+					 <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id='extra_sell_title' translate='label' type='text' sortOrder='6' showInDefault='1' showInWebsite='1' showInStore='0'>
+					 <label>Extra Sell Title</label>
+					 <depends>
+						<field id='*/*/extra_sell_status'>1</field>
+					 </depends>
+				</field>
+				<field id='extra_sell_description' translate='label' type='editor' sortOrder='7' showInDefault='1' showInWebsite='1' showInStore='0'>
+					 <label>Extra Sell Description</label>
+					 <frontend_model>Seavus\Products\Block\Adminhtml\System\Config\Editor</frontend_model>
+					 <depends>
+						<field id='*/*/extra_sell_status'>1</field>
+					</depends>
+				</field>
+				 <field id='extra_sell_products' translate='label' type='text' sortOrder='8' showInDefault='1' showInWebsite='1' showInStore='0'>
+					 <label>Extra Sell Products</label>
+					 <depends>
+						<field id='*/*/extra_sell_status'>1</field>
+					 </depends>
+				</field>
+			</group>
+		</section>
+	</system>
 </config>  
