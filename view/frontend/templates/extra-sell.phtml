@@ -68,10 +68,9 @@ if ($count = $b->items()->count()) { /** @var int $count */
 												], df_tag('span', [], __('Add to Cart')));
 											}
 											else {
-												$postData = df_post_h()->getPostData(
+												$postParams = json_decode(df_post_h()->getPostData(
 													$b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]
-												);
-												$postParams = json_decode($postData,true);
+												), true);
 												?>
 												<form
 													action="<?= $postParams['action']; ?>"
@@ -116,85 +115,48 @@ if ($count = $b->items()->count()) { /** @var int $count */
 				</div>
 			</div>
 		</div>
-	 <?php if (false/*!$b->isRedirectToCartEnabled()*/) : ?>
-			<script type="text/x-magento-init">
-			{
-				"[data-role=tocart-form], .form.map.checkout": {
-					"catalogAddToCart": {}
-				}
-			}
-			</script>
-	<?php endif; ?>
-
+	</div>
 	<script type="text/javascript">
-	require([
-		'jquery',
-		'slick'
-	], function ($) {
-			$(".related-crossell.bottom-products .products-related .product-items").not('.slick-initialized').slick({
-				dots: false,
-				infinite: false,
-				arrows:true,
-				speed: 300,
-				slidesToShow: 4,
-				slidesToScroll: 4,
-				adaptiveHeight:true,
-				lazyLoad: 'ondemand',
-				responsive: [
-					{
-						breakpoint: 1280,
-						settings: {
-							slidesToShow: 4,
-							slidesToScroll: 4
-						}
-					},
-					{
-						breakpoint: 960,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
-						}
-					},
-					{
-						breakpoint: 600,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3,
-							dots: false,
-							arrows:true,
-							autoplay: false,
-							autoplaySpeed: 5000
-
-						}
-					}
-				]
-			});
-			$(".block-title").show();
-			function getRows(selector) {
-				var height = $(selector).height();
-				var line_height = $(selector).css('line-height');
-				line_height = parseFloat(line_height);
-				var rows = height / line_height;
-				return Math.round(rows);
+	require(['jquery', 'slick'], function($) {
+		$(".related-crossell.bottom-products .products-related .product-items").not('.slick-initialized').slick({
+			adaptiveHeight:true,
+			arrows:true,
+			dots: false,
+			infinite: false,
+			lazyLoad: 'ondemand',
+			slidesToScroll: 4,
+			slidesToShow: 4,
+			speed: 300,
+			responsive: [
+				{breakpoint: 1280, settings: {slidesToScroll: 4, slidesToShow: 4}}
+				,{breakpoint: 960, settings: {slidesToScroll: 3, slidesToShow: 3}}
+				,{breakpoint: 768, settings: {slidesToScroll: 3, slidesToShow: 3}}
+				,{breakpoint: 600, settings: {
+					arrows:true,
+					autoplay: false,
+					autoplaySpeed: 5000,
+					dots: false,
+					slidesToScroll: 3,
+					slidesToShow: 3
+				}}
+			]
+		});
+		$('.block-title').show();
+		var getRows = function(selector) {
+			var height = $(selector).height();
+			var line_height = $(selector).css('line-height');
+			line_height = parseFloat(line_height);
+			var rows = height / line_height;
+			return Math.round(rows);
+		};
+		$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
+			var id = $(this).attr('value');
+			var product_link = $('.link-'+id);
+			if (2 <= getRows(product_link)) {
+				$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
 			}
-			$(".klarna-extra-sell-products li.item.product.product-item").each(function() {
-				var id= $(this).attr('value');
-				var product_link= $('.link-'+id);
-
-				if(getRows(product_link)>=2){
-					$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
-				}
-			});
-
+		});
 	});
 	</script>
-
-	</div> <?php
+	<?php
 }
