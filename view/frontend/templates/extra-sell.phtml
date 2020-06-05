@@ -56,29 +56,49 @@ if ($count = $b->items()->count()) { /** @var int $count */
 									<?= $b->getProductPrice($_item); ?>
 									<?= $b->part($_item, 'recommended_price') ?>
 									<div class="add-tocart-button">
-										<?php if ($_item->isSaleable()){ ?>
-											<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+										<?php if ($_item->isSaleable()) { ?>
+											<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)) { ?>
 												<button class="action tocart primary show-tooltip" data-mage-init='{"redirectUrl": {"url": "<?= $b->getAddToCartUrl($_item) ?>"}}' type="button" title="<?= __('Add to Cart') ?>">
 													<span><?= __('Add to Cart') ?></span>
 												</button>
-											<?php else: ?>
+											<?php } else { ?>
 												<?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
 												$postData = $postDataHelper->getPostData($b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
 												$postParams = json_decode($postData,true);
 												?>
-												<form data-role="tocart-form" action="<?= $postParams['action']; ?>" method="post">
-													<input type="hidden" name="product" value="<?= $postParams['data']['product']; ?>">
-													<input type="hidden" value="<?= __('Adding...')?>" name="BtnWhileAdding"/>
-													<input type="hidden" value="<?= __('Added')?>" name="BtnTextAdded"/>
-													<input type="hidden"  value="<?= __('Add to Cart')?>" name="BtnTextDefault"/>
+												<form
+													action="<?= $postParams['action']; ?>"
+													data-role="tocart-form"
+													method="post"
+												>
+													<input
+														name="product"
+														type="hidden"
+														value="<?= $postParams['data']['product']; ?>"
+													/>
+													<input
+														name="BtnWhileAdding"
+														type="hidden"
+														value="<?= __('Adding...')?>"
+													/>
+													<input
+														name="BtnTextAdded"
+														type="hidden"
+														value="<?= __('Added')?>"
+													/>
+													<input
+														name="BtnTextDefault"
+														type="hidden"
+														value="<?= __('Add to Cart')?>"
+													/>
 													<?= $b->getBlockHtml('formkey'); ?>
 													<button
-														type="submit"
-														title="<?= $b->escapeHtml(__('Buy')); ?>"
 														class="action tocart primary"
+														title="<?= $b->escapeHtml(__('Buy')); ?>"
+														type="submit"
 													><span><?= __('Buy') ?></span></button>
 												</form>
-											<?php endif; ?>
+											<?php } ?>
 										<?php } ?>
 									</div>
 								</div>
