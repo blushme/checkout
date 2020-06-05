@@ -1,5 +1,6 @@
  <?php
 use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** @var B $b */
+use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
 $label_helper = $this->helper("Codazon\ProductLabel\Helper\Data");  // CUSTOM CODE
 /** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
 $extra_sell_products = $b->getExtraSellProducts();
@@ -7,7 +8,6 @@ $exist = count($extra_sell_products) > 0 ? true : false;
 if ($exist) {
 	$type = 'related';
 	$class = $type;
-
 	$image = 'related_products_list';
 	$image_hover = 'related_products_list_hover';
 	$description = $b->getExtraSellDescription();
