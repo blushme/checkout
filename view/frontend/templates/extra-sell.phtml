@@ -3,7 +3,7 @@ use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** 
 use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
 use Codazon\ProductLabel\Helper\Data as CodazonH;
 $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
-$extra_sell_products = $b->getExtraSellProducts();
+$extra_sell_products = $b->items();
 $exist = count($extra_sell_products) > 0 ? true : false;
 if ($exist) {
 	$type = 'related';
@@ -12,7 +12,7 @@ if ($exist) {
 	$image_hover = 'related_products_list_hover';
 	$items = $extra_sell_products;
 }
-if ($exist): ?>
+if ($exist) { ?>
 <div class="cross-sell-products-container klarna-extra-sell-products">
 	<div class="block <?= $class; ?>">
     	<div class="block-title title">
@@ -175,4 +175,4 @@ require([
 </script>
 
 </div>
-<?php endif;?>
+<?php }
