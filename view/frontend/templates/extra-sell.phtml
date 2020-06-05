@@ -72,12 +72,11 @@ if ($count = $b->items()->count()) { /** @var int $count */
 													<input type="hidden" value="<?= __('Added')?>" name="BtnTextAdded"/>
 													<input type="hidden"  value="<?= __('Add to Cart')?>" name="BtnTextDefault"/>
 													<?= $b->getBlockHtml('formkey'); ?>
-													<button type="submit"
-															title="<?= $b->escapeHtml(__('Buy')); ?>"
-															class="action tocart primary" />
-															<!-- id="product-addtocart-button" -->
-														<span><?= __('Buy') ?></span>
-													</button>
+													<button
+														type="submit"
+														title="<?= $b->escapeHtml(__('Buy')); ?>"
+														class="action tocart primary"
+													><span><?= __('Buy') ?></span></button>
 												</form>
 											<?php endif; ?>
 										<?php } ?>
