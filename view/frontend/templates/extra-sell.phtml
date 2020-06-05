@@ -57,13 +57,20 @@ if ($count = $b->items()->count()) { /** @var int $count */
 									<?= $b->part($_item, 'recommended_price') ?>
 									<div class="add-tocart-button">
 										<?php if ($_item->isSaleable()) { ?>
-											<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)) { ?>
-												<button class="action tocart primary show-tooltip" data-mage-init='{"redirectUrl": {"url": "<?= $b->getAddToCartUrl($_item) ?>"}}' type="button" title="<?= __('Add to Cart') ?>">
-													<span><?= __('Add to Cart') ?></span>
-												</button>
-											<?php } else { ?>
-												<?php
-												$postData = df_post_h()->getPostData($b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
+											<?php
+											if ($_item->getTypeInstance()->hasRequiredOptions($_item)) {
+												echo df_tag('button', [
+													'class' => 'action tocart primary show-tooltip'
+													,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' =>
+														$b->getAddToCartUrl($_item)
+													]])
+													,'title' => __('Add to Cart')
+												], df_tag('span', [], __('Add to Cart')));
+											}
+											else {
+												$postData = df_post_h()->getPostData(
+													$b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]
+												);
 												$postParams = json_decode($postData,true);
 												?>
 												<form
