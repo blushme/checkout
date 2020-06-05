@@ -137,7 +137,6 @@ I have ported the code from here: https://github.com/blushme/site/blob/2020-04-2
 						after='-'
 						class='BlushMe\Checkout\Block\ExtraSell'
 						name='checkout.extra.sell'
-						template='BlushMe_Checkout::extra-sell.phtml'
 					/>
 				</container>
 				<container name='checkout.cart.noitems' as='no-items'>

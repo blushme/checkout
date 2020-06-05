@@ -9,6 +9,15 @@ use Magento\Catalog\Model\Product\Visibility as V;
 class ExtraSell extends \Magento\Catalog\Block\Product\AbstractProduct {
 	/**
 	 * 2020-06-05
+	 * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
+	 * @override
+	 * @see \Magento\Framework\View\Element\Template::getTemplate()
+	 * @return string
+	 */
+	function getTemplate() {return 'BlushMe_Checkout::extra-sell.phtml';}
+
+	/**
+	 * 2020-06-05
 	 * @return PC
 	 */
 	function items() {
