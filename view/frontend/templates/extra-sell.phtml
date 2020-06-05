@@ -46,19 +46,16 @@ if ($count = $b->items()->count()) { /** @var int $count */
 												title='<?= $b->escapeHtml($_item->getName()) ?>'
 											><?= $b->escapeHtml($_item->getName()) ?></a>
 										</strong>
-										<?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/brand.phtml")->setProduct($_item)->setExcludeBrandUrl(true)->toHtml(); ?>
+										<?= $b->part($_item, 'brand', ['exclude_brand_url' => true]) ?>
 										<div class="raiting-content-grid product-explanation-attribute">
-									  <?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/product_explanation.phtml")->setProduct($_item)->toHtml(); ?>
-									</div>
+											<?= $b->part($_item, 'product_explanation') ?>
+										</div>
 									</div>
 									 <div class="raiting-content-grid">
 										<?= $b->getReviewsSummaryHtml($_item, null) ?>
 									</div>
-
 									<?= $b->getProductPrice($_item); ?>
-
-									<?= $this->getLayout()->createBlock(ProductB::class)->setTemplate("Seavus_Products::product/view/recommended_price.phtml")->setProduct($_item)->toHtml(); ?>
-
+									<?= $b->part($_item, 'recommended_price') ?>
 									<div class="add-tocart-button">
 										<?php if ($_item->isSaleable()){ ?>
 											<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
