@@ -5,20 +5,17 @@ use Magento\Catalog\Model\Product as P;
 use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
 if ($count = $b->items()->count()) { /** @var int $count */
 	$codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
-	$type = 'related';
-	$class = $type;
-	$image = 'related_products_list';
-	$image_hover = 'related_products_list_hover';
 	?>
-	<div class="cross-sell-products-container klarna-extra-sell-products">
-		<div class="block <?= $class; ?>">
-			<div class="block-title title">
-				<strong id="block-<?= $class ?>-heading" role="heading" aria-level="2"><?= df_cfg("klarna/settings/extra_sell_title") ?></strong>
+	<div class='cross-sell-products-container klarna-extra-sell-products'>
+		<div class='block related'>
+			<div class='block-title title'>
+				<strong id='block-related-heading' role='heading' aria-level='2'>
+					<?= df_cfg('klarna/settings/extra_sell_title') ?>
+				</strong>
 			</div>
 			<div class="block-description"><?= df_cfg("klarna/settings/extra_sell_description"); ?></div>
-
-			<div class="related-crossell block-content content bottom-products" aria-labelledby="block-<?= $class?>-heading">
-				<div class="products wrapper grid products-grid products-<?= $type; ?>">
+			<div class="related-crossell block-content content bottom-products" aria-labelledby="block-related-heading">
+				<div class="products wrapper grid products-grid products-related">
 					<ol class="products list items product-items" id="slider-extra-sell-products">
 						<?php $iterator = 1; ?>
 						<?php foreach ($b->items() as $_item): /** @var P $_item */ ?>
@@ -27,10 +24,9 @@ if ($count = $b->items()->count()) { /** @var int $count */
 						<div class="product-item-info">
 							<div class="cdz-hover-section">
 								<div class="cdz-product-top">
-									<?= '<!-- ' . $image . '-->' ?>
 									<a href="<?= $_item->getProductUrl(); ?>" class="product photo product-item-photo">
 										<span class="hover-image">
-											<?= $b->getImage($_item, $image_hover)->toHtml(); ?>
+											<?= $b->getImage($_item, 'related_products_list_hover')->toHtml(); ?>
 										</span>
 									</a>
 									<?php $codazonH->showLabel($_item); ?>
