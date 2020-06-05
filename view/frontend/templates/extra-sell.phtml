@@ -1,14 +1,14 @@
  <?php
 use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** @var B $b */
-use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
 use Codazon\ProductLabel\Helper\Data as CodazonH;
-if ($b->items()->count()) {
+use Magento\Catalog\Model\Product as P;
+use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
+if ($count = $b->items()->count()) { /** @var int $count */
 	$codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 	$type = 'related';
 	$class = $type;
 	$image = 'related_products_list';
 	$image_hover = 'related_products_list_hover';
-	$items = $b->items();
 	?>
 	<div class="cross-sell-products-container klarna-extra-sell-products">
 		<div class="block <?= $class; ?>">
@@ -21,7 +21,7 @@ if ($b->items()->count()) {
 				<div class="products wrapper grid products-grid products-<?= $type; ?>">
 					<ol class="products list items product-items" id="slider-extra-sell-products">
 						<?php $iterator = 1; ?>
-						<?php foreach ($items as $_item): ?>
+						<?php foreach ($b->items() as $_item): /** @var P $_item */ ?>
 						<?=($iterator++ == 1) ? '<li class="item product product-item" value="'.$_item->getId().'">' : '</li><li class="item product product-item" value="'.$_item->getId().'">' ?>
 					   <input type="hidden" class="product_id" value="<?= $_item->getId()?>"/>
 						<div class="product-item-info">
@@ -85,7 +85,7 @@ if ($b->items()->count()) {
 									</div>
 								</div>
 							</div>
-							<?=($iterator == count($items)+1) ? '</li>' : '' ?>
+							<?= ($iterator == $count + 1) ? '</li>' : '' ?>
 						<?php endforeach ?>
 					</ol>
 				</div>
