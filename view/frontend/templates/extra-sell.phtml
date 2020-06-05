@@ -62,8 +62,8 @@ if ($count = $b->items()->count()) { /** @var int $count */
 													<span><?= __('Add to Cart') ?></span>
 												</button>
 											<?php } else { ?>
-												<?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
-												$postData = $postDataHelper->getPostData($b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
+												<?php
+												$postData = df_post_h()->getPostData($b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
 												$postParams = json_decode($postData,true);
 												?>
 												<form
