@@ -3,7 +3,6 @@ use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** 
 use Codazon\ProductLabel\Helper\Data as CodazonH;
 use Magento\Catalog\Model\Product as P;
 use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
-use Seavus\Products\Block\Product\View as ProductB;
 if ($count = $b->items()->count()) { /** @var int $count */
 	$codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 	?>
