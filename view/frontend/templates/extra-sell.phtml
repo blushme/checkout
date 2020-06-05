@@ -1,10 +1,10 @@
  <?php
-/* @var $block \Magento\Catalog\Block\Product\AbstractProduct */
+use BlushMe\Checkout\Block\ExtraSell as B; /* @var B $block */ $b = $block; /** @var B $b */
 $label_helper = $this->helper("Codazon\ProductLabel\Helper\Data");  // CUSTOM CODE
-switch ($type = $block->getType()) {   
+switch ($type = $b->getType()) {   
     case 'custom-extrasell': // CUSTOM CODE
     	/** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
-    	$extra_sell_products = $block->getExtraSellProducts();
+    	$extra_sell_products = $b->getExtraSellProducts();
     	$exist = count($extra_sell_products) > 0 ? true : false; 
     	if ($exist) {
     		$type = 'related';
@@ -12,7 +12,7 @@ switch ($type = $block->getType()) {
     		
     		$image = 'related_products_list';
     		$image_hover = 'related_products_list_hover';
-    		$description = $block->getExtraSellDescription();
+    		$description = $b->getExtraSellDescription();
     		$items = $extra_sell_products;
     	}
     break;
@@ -44,7 +44,7 @@ switch ($type = $block->getType()) {
 								<?= '<!-- ' . $image . '-->' ?>
 								<a href="<?= $_item->getProductUrl(); ?>" class="product photo product-item-photo">						
 									<span class="hover-image">
-										<?php echo $block->getImage($_item, $image_hover)->toHtml(); ?>
+										<?php echo $b->getImage($_item, $image_hover)->toHtml(); ?>
 									</span>
 								</a>
 								<?php $label_helper->showLabel($_item); ?> 
@@ -54,8 +54,8 @@ switch ($type = $block->getType()) {
 	               
 							<div class="product details product-item-details">
 								<div class="name-brand-content">
-									<strong class="product name product-item-name"><a class="product-item-link link-<?php echo $_item->getId()?>" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?= $block->getProductUrl($_item) ?>">
-										<?php echo $block->escapeHtml($_item->getName()) ?></a>
+									<strong class="product name product-item-name"><a class="product-item-link link-<?php echo $_item->getId()?>" title="<?php echo $b->escapeHtml($_item->getName()) ?>" href="<?= $b->getProductUrl($_item) ?>">
+										<?php echo $b->escapeHtml($_item->getName()) ?></a>
 									</strong>
 									<?php echo $this->getLayout()->createBlock("Seavus\Products\Block\Product\View")->setTemplate("Seavus_Products::product/view/brand.phtml")->setProduct($_item)->setExcludeBrandUrl(true)->toHtml(); ?>                 
 								    <div class="raiting-content-grid product-explanation-attribute">
@@ -63,22 +63,22 @@ switch ($type = $block->getType()) {
 								</div>
 								</div>
 	                             <div class="raiting-content-grid">
-	                                <?php echo $block->getReviewsSummaryHtml($_item, null) ?>
+	                                <?php echo $b->getReviewsSummaryHtml($_item, null) ?>
 	                            </div>	 						
 																				                 						
-								<?= $block->getProductPrice($_item); ?>						
+								<?= $b->getProductPrice($_item); ?>						
 													
 								<?php echo $this->getLayout()->createBlock("Seavus\Products\Block\Product\View")->setTemplate("Seavus_Products::product/view/recommended_price.phtml")->setProduct($_item)->toHtml(); ?>
 								
 								<div class="add-tocart-button">									
 									<?php if ($_item->isSaleable()){ ?>
 										<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
-											<button class="action tocart primary show-tooltip" data-mage-init='{"redirectUrl": {"url": "<?= $block->getAddToCartUrl($_item) ?>"}}' type="button" title="<?= __('Add to Cart') ?>">
+											<button class="action tocart primary show-tooltip" data-mage-init='{"redirectUrl": {"url": "<?= $b->getAddToCartUrl($_item) ?>"}}' type="button" title="<?= __('Add to Cart') ?>">
 												<span><?= __('Add to Cart') ?></span>
 											</button>
 										<?php else: ?>
 											<?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
-											$postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
+											$postData = $postDataHelper->getPostData($b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]);
 											$postParams = json_decode($postData,true);
 											?>
 											<form data-role="tocart-form" action="<?= $postParams['action']; ?>" method="post">
@@ -86,9 +86,9 @@ switch ($type = $block->getType()) {
 									           	<input type="hidden" value="<?php echo __('Adding...')?>" name="BtnWhileAdding"/>
 									            <input type="hidden" value="<?php echo __('Added')?>" name="BtnTextAdded"/>
 									            <input type="hidden"  value="<?php echo __('Add to Cart')?>" name="BtnTextDefault"/>
-												<?php echo $block->getBlockHtml('formkey'); ?>
+												<?php echo $b->getBlockHtml('formkey'); ?>
 												<button type="submit"
-														title="<?php echo $block->escapeHtml(__('Buy')); ?>"
+														title="<?php echo $b->escapeHtml(__('Buy')); ?>"
 														class="action tocart primary" />
 														<!-- id="product-addtocart-button" -->
 													<span><?= __('Buy') ?></span>
@@ -105,7 +105,7 @@ switch ($type = $block->getType()) {
 	        </div>
 	    </div>
 	</div>
- <?php if (false/*!$block->isRedirectToCartEnabled()*/) : ?>
+ <?php if (false/*!$b->isRedirectToCartEnabled()*/) : ?>
         <script type="text/x-magento-init">
         {
             "[data-role=tocart-form], .form.map.checkout": {
