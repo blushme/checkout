@@ -2,9 +2,11 @@
 use BlushMe\Checkout\Block\Extra as ParentB; /* @var ParentB $parent */
 use BlushMe\Checkout\Block\Extra\Item as B; /* @var B $block */ $b = $block; /** @var B $b */
 use Codazon\ProductLabel\Helper\Data as CodazonH;
+use Magento\Catalog\Block\Product\AbstractProduct as PB;
 use Magento\Catalog\Model\Product as P; /** @var P $p */
 use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
 $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
+$pb = df_product_b(); /** @var PB $pb */
 ?>
 <li class='item product product-item' value='<?= $p->getId() ?>'>
 	<input class='product_id' type='hidden' value='<?= $p->getId()?>' />
@@ -40,17 +42,16 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 			<?= $b->part('recommended_price') ?>
 			<div class="add-tocart-button">
 				<?php if ($p->isSaleable()) {
-					$addToCartURL = df_product_b()->getAddToCartUrl($p); /** @var string $addToCartURL */
 					if ($p->getTypeInstance()->hasRequiredOptions($p)) {
 						echo df_tag('button', [
 							'class' => 'action tocart primary show-tooltip'
-							,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' => $addToCartURL]])
+							,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' => $pb->getAddToCartUrl($p)]])
 							,'title' => __('Add to Cart')
 						], df_tag('span', [], __('Add to Cart')));
 					}
 					else {
 						$postParams = json_decode(df_post_h()->getPostData(
-							$addToCartURL, ['product' => $p->getEntityId()]
+							$pb->getAddToCartUrl($p), ['product' => $p->getEntityId()]
 						), true);
 						?>
 						<form action="<?= $postParams['action']; ?>" data-role="tocart-form" method="post">
