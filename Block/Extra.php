@@ -1,9 +1,7 @@
 <?php
 namespace BlushMe\Checkout\Block;
-use Magento\Catalog\Model\Product as P;
 use Magento\Catalog\Model\Product\Visibility as V;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as PC;
-use Seavus\Products\Block\Product\View as ProductB;
 /**
  * 2020-06-04
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
@@ -34,15 +32,6 @@ class Extra extends \Magento\Catalog\Block\Product\AbstractProduct {
 	/**
 	 * 2020-06-05
 	 * @used-by vendor/blushme/checkout/view/frontend/templates/extra-sell.phtml
-	 * @param string $name
-	 * @param mixed $value
-	 * @return string
-	 */
-	function hidden($name, $value) {return df_tag('input', ['name' => $name, 'type' => 'hidden', 'value' => $value]);}
-
-	/**
-	 * 2020-06-05
-	 * @used-by vendor/blushme/checkout/view/frontend/templates/extra-sell.phtml
 	 * @return PC
 	 */
 	function items() {return dfc($this, function() {
@@ -53,16 +42,6 @@ class Extra extends \Magento\Catalog\Block\Product\AbstractProduct {
 		df_stock_h()->addIsInStockFilterToCollection($r);
 		return $r;
 	});}
-
-	/**
-	 * @param P $p
-	 * @param string $template
-	 * @param array(string => mixed) $d [optional]
-	 * @return string
-	 */
-	function part(P $p, $template, $d = []) {return df_block(
-		ProductB::class, $d + ['product' => $p], "Seavus_Products::product/view/$template"
-	)->toHtml();}
 
 	/**
 	 * 2020-06-05
