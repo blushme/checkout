@@ -77,27 +77,13 @@ if ($count = $b->items()->count()) { /** @var int $count */
 													data-role="tocart-form"
 													method="post"
 												>
-													<input
-														name="product"
-														type="hidden"
-														value="<?= $postParams['data']['product']; ?>"
-													/>
-													<input
-														name="BtnWhileAdding"
-														type="hidden"
-														value="<?= __('Adding...') ?>"
-													/>
-													<input
-														name="BtnTextAdded"
-														type="hidden"
-														value="<?= __('Added') ?>"
-													/>
-													<input
-														name="BtnTextDefault"
-														type="hidden"
-														value="<?= __('Add to Cart') ?>"
-													/>
-													<?= $b->getBlockHtml('formkey'); ?>
+													<?= df_cc_n(
+														$b->hidden('product', $postParams['data']['product'])
+														,$b->hidden('BtnWhileAdding', __('Adding...'))
+														,$b->hidden('BtnTextAdded', __('Added'))
+														,$b->hidden('BtnTextDefault', __('Add to Cart'))
+														,$b->getBlockHtml('formkey')
+													)?>
 													<button
 														class="action tocart primary"
 														title="<?= $b->escapeHtml(__('Buy')); ?>"
@@ -142,17 +128,10 @@ if ($count = $b->items()->count()) { /** @var int $count */
 			]
 		});
 		$('.block-title').show();
-		var getRows = function(selector) {
-			var height = $(selector).height();
-			var line_height = $(selector).css('line-height');
-			line_height = parseFloat(line_height);
-			var rows = height / line_height;
-			return Math.round(rows);
-		};
 		$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
-			var id = $(this).attr('value');
-			var product_link = $('.link-'+id);
-			if (2 <= getRows(product_link)) {
+			debugger;
+			var $l = $('.link-' + $(this).val());
+			if (2 <= Math.round($l.height() / parseFloat($l.css('line-height')))) {
 				$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
 			}
 		});

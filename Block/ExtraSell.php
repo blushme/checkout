@@ -34,6 +34,15 @@ class ExtraSell extends \Magento\Catalog\Block\Product\AbstractProduct {
 	/**
 	 * 2020-06-05
 	 * @used-by vendor/blushme/checkout/view/frontend/templates/extra-sell.phtml
+	 * @param string $name
+	 * @param mixed $value
+	 * @return string
+	 */
+	function hidden($name, $value) {return df_tag('input', ['name' => $name, 'type' => 'hidden', 'value' => $value]);}
+
+	/**
+	 * 2020-06-05
+	 * @used-by vendor/blushme/checkout/view/frontend/templates/extra-sell.phtml
 	 * @return PC
 	 */
 	function items() {return dfc($this, function() {
