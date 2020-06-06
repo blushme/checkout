@@ -133,11 +133,7 @@ https://github.com/blushme/site/issues/74 -->
 "Reimplement the «Aktuella erbjudanden» block": https://github.com/blushme/checkout/issues/6
 I have ported the code from here: https://github.com/blushme/site/blob/2020-04-28-before-Klarna-upgrade/app/code/Seavus/Klarna/view/frontend/layout/klarna_checkout_index.xml#L24-L28
 -->
-					<block
-						after='-'
-						class='BlushMe\Checkout\Block\ExtraSell'
-						name='checkout.extra.sell'
-					/>
+					<block after='-' class='BlushMe\Checkout\Block\Extra' name='checkout.extra.sell'/>
 				</container>
 				<container name='checkout.cart.noitems' as='no-items'>
 					<block

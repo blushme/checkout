@@ -1,0 +1,135 @@
+ <?php
+use BlushMe\Checkout\Block\Extra as B; /* @var B $block */ $b = $block; /** @var B $b */
+use Codazon\ProductLabel\Helper\Data as CodazonH;
+use Magento\Catalog\Model\Product as P;
+use Magento\Framework\View\TemplateEngine\Php as T; /** @var T $this */
+if ($count = $b->items()->count()) { /** @var int $count */
+	$codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
+	?>
+	<div class='cross-sell-products-container klarna-extra-sell-products'>
+		<div class='block related'>
+			<div class='block-title title'>
+				<strong id='block-related-heading' role='heading' aria-level='2'>
+					<?= df_cfg('klarna/settings/extra_sell_title') ?>
+				</strong>
+			</div>
+			<div class='block-description'><?= df_cfg('klarna/settings/extra_sell_description'); ?></div>
+			<div aria-labelledby='block-related-heading' class='related-crossell block-content content bottom-products'>
+				<div class='products wrapper grid products-grid products-related'>
+					<ol class='products list items product-items' id='slider-extra-sell-products'>
+						<?php foreach ($b->items() as $_item) { /** @var P $_item */ ?>
+							<li class='item product product-item' value='<?= $_item->getId() ?>'>
+								<input class='product_id' type='hidden' value='<?= $_item->getId()?>' />
+								<div class='product-item-info'>
+									<div class='cdz-hover-section'>
+										<div class='cdz-product-top'>
+											<a class='product photo product-item-photo' href='<?= $_item->getProductUrl(); ?>'>
+												<span class='hover-image'>
+													<?= $b->getImage($_item, 'related_products_list_hover')->toHtml(); ?>
+												</span>
+											</a>
+											<?php $codazonH->showLabel($_item); ?>
+										</div>
+									</div>
+									<div class='product details product-item-details'>
+										<div class='name-brand-content'>
+											<strong class='product name product-item-name'>
+												<a
+													class='product-item-link link-<?= $_item->getId()?>'
+													href='<?= $b->getProductUrl($_item) ?>'
+													title='<?= $b->escapeHtml($_item->getName()) ?>'
+												><?= $b->escapeHtml($_item->getName()) ?></a>
+											</strong>
+											<?= $b->part($_item, 'brand', ['exclude_brand_url' => true]) ?>
+											<div class="raiting-content-grid product-explanation-attribute">
+												<?= $b->part($_item, 'product_explanation') ?>
+											</div>
+										</div>
+										 <div class="raiting-content-grid">
+											<?= $b->getReviewsSummaryHtml($_item, null) ?>
+										</div>
+										<?= $b->getProductPrice($_item); ?>
+										<?= $b->part($_item, 'recommended_price') ?>
+										<div class="add-tocart-button">
+											<?php if ($_item->isSaleable()) { ?>
+												<?php
+												if ($_item->getTypeInstance()->hasRequiredOptions($_item)) {
+													echo df_tag('button', [
+														'class' => 'action tocart primary show-tooltip'
+														,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' =>
+															$b->getAddToCartUrl($_item)
+														]])
+														,'title' => __('Add to Cart')
+													], df_tag('span', [], __('Add to Cart')));
+												}
+												else {
+													$postParams = json_decode(df_post_h()->getPostData(
+														$b->getAddToCartUrl($_item), ['product' => $_item->getEntityId()]
+													), true);
+													?>
+													<form
+														action="<?= $postParams['action']; ?>"
+														data-role="tocart-form"
+														method="post"
+													>
+														<?= df_cc_n(
+															$b->hidden('product', $postParams['data']['product'])
+															,$b->hidden('BtnWhileAdding', __('Adding...'))
+															,$b->hidden('BtnTextAdded', __('Added'))
+															,$b->hidden('BtnTextDefault', __('Add to Cart'))
+															,$b->getBlockHtml('formkey')
+														)?>
+														<button
+															class="action tocart primary"
+															title="<?= $b->escapeHtml(__('Buy')); ?>"
+															type="submit"
+														><span><?= __('Buy') ?></span></button>
+													</form>
+												<?php } ?>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</li>
+						<?php } ?>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	require(['jquery', 'slick'], function($) {
+		$(".related-crossell.bottom-products .products-related .product-items").not('.slick-initialized').slick({
+			adaptiveHeight:true,
+			arrows:true,
+			dots: false,
+			infinite: false,
+			lazyLoad: 'ondemand',
+			slidesToScroll: 4,
+			slidesToShow: 4,
+			speed: 300,
+			responsive: [
+				{breakpoint: 1280, settings: {slidesToScroll: 4, slidesToShow: 4}}
+				,{breakpoint: 960, settings: {slidesToScroll: 3, slidesToShow: 3}}
+				,{breakpoint: 768, settings: {slidesToScroll: 3, slidesToShow: 3}}
+				,{breakpoint: 600, settings: {
+					arrows:true,
+					autoplay: false,
+					autoplaySpeed: 5000,
+					dots: false,
+					slidesToScroll: 3,
+					slidesToShow: 3
+				}}
+			]
+		});
+		$('.block-title').show();
+		$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
+			var $l = $('.link-' + $(this).val());
+			if (2 <= Math.round($l.height() / parseFloat($l.css('line-height')))) {
+				$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
+			}
+		});
+	});
+	</script>
+	<?php
+}

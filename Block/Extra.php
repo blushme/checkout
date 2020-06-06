@@ -10,7 +10,7 @@ use Seavus\Products\Block\Product\View as ProductB;
  * "Reimplement the «Aktuella erbjudanden» block": https://github.com/blushme/checkout/issues/6
  * I have ported the code from here: https://github.com/blushme/site/blob/2020-04-28-before-Klarna-upgrade/app/code/Seavus/Klarna/Block/Checkout/Extrasell.php
  */
-class ExtraSell extends \Magento\Catalog\Block\Product\AbstractProduct {
+class Extra extends \Magento\Catalog\Block\Product\AbstractProduct {
 	/**
 	 * 2020-06-05
 	 * @see \Magento\Framework\View\Element\Template::getCacheKeyInfo()
@@ -29,7 +29,7 @@ class ExtraSell extends \Magento\Catalog\Block\Product\AbstractProduct {
 	 * @used-by \Magento\Framework\View\Element\Template::getTemplateFile()
 	 * @return string
 	 */
-	function getTemplate() {return df_asset_name('extra-sell.phtml');}
+	function getTemplate() {return df_asset_name('extra.phtml');}
 
 	/**
 	 * 2020-06-05
