@@ -129,7 +129,6 @@ if ($count = $b->items()->count()) { /** @var int $count */
 		});
 		$('.block-title').show();
 		$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
-			debugger;
 			var $l = $('.link-' + $(this).val());
 			if (2 <= Math.round($l.height() / parseFloat($l.css('line-height')))) {
 				$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
