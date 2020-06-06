@@ -16,7 +16,7 @@ if ($count = $b->items()->count()) { /** @var int $count */
 				<div class='products wrapper grid products-grid products-related'>
 					<ol class='products list items product-items' id='slider-extra-sell-products'>
 						<?= df_cc_n(df_map(function(P $p) use($b) {return df_block_output(
-							ItemB::class, null, ['p' => $p, 'pb' => $b], ['p' => $p]
+							ItemB::class, null, ['p' => $p, 'parent' => $b], ['p' => $p]
 						);}, $b->items())); ?>
 					</ol>
 				</div>

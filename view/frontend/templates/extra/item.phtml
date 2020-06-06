@@ -1,5 +1,5 @@
 <?php
-use BlushMe\Checkout\Block\Extra as ParentB; /* @var ParentB $pb */
+use BlushMe\Checkout\Block\Extra as ParentB; /* @var ParentB $parent */
 use BlushMe\Checkout\Block\Extra\Item as B; /* @var B $block */ $b = $block; /** @var B $b */
 use Codazon\ProductLabel\Helper\Data as CodazonH;
 use Magento\Catalog\Model\Product as P; /** @var P $p */
@@ -13,7 +13,7 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 			<div class='cdz-product-top'>
 				<a class='product photo product-item-photo' href='<?= $p->getProductUrl(); ?>'>
 					<span class='hover-image'>
-						<?= $pb->getImage($p, 'related_products_list_hover')->toHtml(); ?>
+						<?= $parent->getImage($p, 'related_products_list_hover')->toHtml(); ?>
 					</span>
 				</a>
 				<?php $codazonH->showLabel($p); ?>
@@ -24,7 +24,7 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 				<strong class='product name product-item-name'>
 					<a
 						class='product-item-link link-<?= $p->getId()?>'
-						href='<?= $pb->getProductUrl($p) ?>'
+						href='<?= $parent->getProductUrl($p) ?>'
 						title='<?= $b->escapeHtml($p->getName()) ?>'
 					><?= $b->escapeHtml($p->getName()) ?></a>
 				</strong>
@@ -34,9 +34,9 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 				</div>
 			</div>
 			 <div class="raiting-content-grid">
-				<?= $pb->getReviewsSummaryHtml($p, null) ?>
+				<?= $parent->getReviewsSummaryHtml($p, null) ?>
 			</div>
-			<?= $pb->getProductPrice($p); ?>
+			<?= $parent->getProductPrice($p); ?>
 			<?= $b->part('recommended_price') ?>
 			<div class="add-tocart-button">
 				<?php if ($p->isSaleable()) {
@@ -53,11 +53,7 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 							$addToCartURL, ['product' => $p->getEntityId()]
 						), true);
 						?>
-						<form
-							action="<?= $postParams['action']; ?>"
-							data-role="tocart-form"
-							method="post"
-						>
+						<form action="<?= $postParams['action']; ?>" data-role="tocart-form" method="post">
 							<?= df_cc_n(
 								$b->hidden('product', $postParams['data']['product'])
 								,$b->hidden('BtnWhileAdding', __('Adding...'))
