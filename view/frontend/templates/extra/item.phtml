@@ -15,7 +15,7 @@ $pb = df_product_b(); /** @var PB $pb */
 			<div class='cdz-product-top'>
 				<a class='product photo product-item-photo' href='<?= $p->getProductUrl(); ?>'>
 					<span class='hover-image'>
-						<?= $parent->getImage($p, 'related_products_list_hover')->toHtml(); ?>
+						<?= $pb->getImage($p, 'related_products_list_hover')->toHtml(); ?>
 					</span>
 				</a>
 				<?php $codazonH->showLabel($p); ?>
@@ -26,7 +26,7 @@ $pb = df_product_b(); /** @var PB $pb */
 				<strong class='product name product-item-name'>
 					<a
 						class='product-item-link link-<?= $p->getId()?>'
-						href='<?= $parent->getProductUrl($p) ?>'
+						href='<?= $pb->getProductUrl($p) ?>'
 						title='<?= $b->escapeHtml($p->getName()) ?>'
 					><?= $b->escapeHtml($p->getName()) ?></a>
 				</strong>
@@ -35,9 +35,7 @@ $pb = df_product_b(); /** @var PB $pb */
 					<?= $b->part('product_explanation') ?>
 				</div>
 			</div>
-			 <div class="raiting-content-grid">
-				<?= $parent->getReviewsSummaryHtml($p, null) ?>
-			</div>
+			<div class="raiting-content-grid"><?= $pb->getReviewsSummaryHtml($p, null) ?></div>
 			<?= $parent->getProductPrice($p); ?>
 			<?= $b->part('recommended_price') ?>
 			<div class="add-tocart-button">
