@@ -7,7 +7,7 @@ use Seavus\Products\Block\Product\View as ProductB;
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  * "Reimplement the «Aktuella erbjudanden» block": https://github.com/blushme/checkout/issues/6
  */
-class Item extends \Magento\Catalog\Block\Product\AbstractProduct {
+class Item extends \Magento\Framework\View\Element\Template {
 	/**
 	 * 2020-06-06
 	 * @override
