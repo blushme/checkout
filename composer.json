@@ -11,7 +11,7 @@
 		,"homepage": "https://mage2.pro/users/dmitry_fedyuk"
 		,"role": "Developer"
 	}]
-	,"require": {"mage2pro/core": ">=6.5.8"}
+	,"require": {"mage2pro/core": ">=6.5.9"}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"BlushMe\\Checkout\\": ""}}
 	,"keywords": ["Magento 2", "Klarna"]
 }

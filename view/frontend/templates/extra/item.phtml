@@ -39,18 +39,18 @@ $codazonH = $this->helper(CodazonH::class); /** @var CodazonH $codazonH */
 			<?= $pb->getProductPrice($p); ?>
 			<?= $b->part('recommended_price') ?>
 			<div class="add-tocart-button">
-				<?php if ($p->isSaleable()) { ?>
-					<?php
+				<?php if ($p->isSaleable()) {
+					$addToCartURL = df_product_b()->getAddToCartUrl($p); /** @var string $addToCartURL */
 					if ($p->getTypeInstance()->hasRequiredOptions($p)) {
 						echo df_tag('button', [
 							'class' => 'action tocart primary show-tooltip'
-							,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' => $pb->getAddToCartUrl($p)]])
+							,'data-mage-init' => df_json_encode(['redirectUrl' => ['url' => $addToCartURL]])
 							,'title' => __('Add to Cart')
 						], df_tag('span', [], __('Add to Cart')));
 					}
 					else {
 						$postParams = json_decode(df_post_h()->getPostData(
-							$pb->getAddToCartUrl($p), ['product' => $p->getEntityId()]
+							$addToCartURL, ['product' => $p->getEntityId()]
 						), true);
 						?>
 						<form
