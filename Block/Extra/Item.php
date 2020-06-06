@@ -1,7 +1,6 @@
 <?php
 namespace BlushMe\Checkout\Block\Extra;
-use Magento\Catalog\Model\Product as P;
-use Seavus\Products\Block\Product\View as ProductB;
+use Seavus\Products\Block\Product\View as PB;
 /**
  * 2020-06-06
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
@@ -23,19 +22,19 @@ class Item extends \Magento\Framework\View\Element\Template {
 	/**
 	 * 2020-06-05
 	 * @used-by vendor/blushme/checkout/view/frontend/templates/extra-sell.phtml
-	 * @param string $name
-	 * @param mixed $value
+	 * @param string $n
+	 * @param mixed $v
 	 * @return string
 	 */
-	function hidden($name, $value) {return df_tag('input', ['name' => $name, 'type' => 'hidden', 'value' => $value]);}
+	function hidden($n, $v) {return df_tag('input', ['name' => $n, 'type' => 'hidden', 'value' => $v]);}
 
 	/**
 	 * 2020-06-05
-	 * @param string $template
+	 * @param string $t
 	 * @param array(string => mixed) $d [optional]
 	 * @return string
 	 */
-	function part($template, $d = []) {return df_block(
-		ProductB::class, $d + ['product' => $this['p']], "Seavus_Products::product/view/$template"
+	function part($t, $d = []) {return df_block(
+		PB::class, $d + ['product' => $this['p']], "Seavus_Products::product/view/$t"
 	)->toHtml();}
 }
