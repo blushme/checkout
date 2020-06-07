@@ -35,8 +35,7 @@ $pb = df_product_b(); /** @var PB $pb */
 				</div>
 			</div>
 			<div class="raiting-content-grid"><?= $pb->getReviewsSummaryHtml($p, null) ?></div>
-			<?= $pb->getProductPrice($p); ?>
-			<?= $b->part('recommended_price') ?>
+			<?= df_cc_n($pb->getProductPrice($p), $b->part('recommended_price')) ?>
 			<div class="add-tocart-button">
 				<?php if ($p->isSaleable()) {
 					if ($p->getTypeInstance()->hasRequiredOptions($p)) {
