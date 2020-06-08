@@ -8,13 +8,17 @@
 		}
 		> .content {
 			max-width: 600px; margin: 0 auto; width: 100%;
-			> .products {
+			> div.products {
 				margin-bottom: 0 !important;
 				padding-bottom: 20px;
-				button.tocart {
-					font-size: 1.1rem;
-					padding: 8px 15px;
-					width: 100%;
+				button.tocart {font-size: 1.1rem; padding: 8px 15px; width: 100%;}
+				> ol.products {
+					margin: 0 !important; overflow: visible;
+					&.slick-initialized {display: block;}
+					> button {
+						&.slick-next {right: -40px;}
+						&.slick-prev {left: -40px;}
+					}
 				}
 			}
 		}
