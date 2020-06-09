@@ -25,8 +25,8 @@ define([], function() {return function() {require(['jquery', 'domReady!'], funct
 			$siblings = $this.siblings('.cart-item-qty');
 			var newAdd = parseInt($siblings.val()) + ($this.hasClass('more') ? 1 : -1);
 			$siblings.val(newAdd);
-			$siblings.attr('data-item-qty', newAdd);
-			$('#update-cart-item-' + $this.siblings('.update-cart-item').attr('data-cart-item')).click();
+			$siblings.data('item-qty', newAdd);
+			$('#update-cart-item-' + $this.siblings('.update-cart-item').data('cart-item')).click();
 		}
 	});
 });}});
