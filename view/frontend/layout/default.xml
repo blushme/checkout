@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<!-- 2020-06-09 -->
+<page 
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
+>
+	<body><referenceContainer name='root'><block class='BlushMe\Checkout\Js'/></referenceContainer></body>
+</page>

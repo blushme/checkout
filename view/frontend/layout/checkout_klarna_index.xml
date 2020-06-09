@@ -151,6 +151,5 @@ I have ported the code from here: https://github.com/blushme/site/blob/2020-04-2
 				</container>
 			</block>
 		</referenceContainer>
-		<referenceContainer name='root'><block class='BlushMe\Checkout\Js'/></referenceContainer>
 	</body>
 </page>
