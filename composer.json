@@ -1,6 +1,6 @@
 {
 	"name": "blushme/checkout"
-	,"version": "0.0.5"
+	,"version": "0.0.6"
 	,"description": "A custom checkout module for blushme.se (Magento 2)"
 	,"type": "magento2-module"
 	,"homepage": "https://github.com/blushme/checkout"
