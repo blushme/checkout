@@ -1,4 +1,4 @@
- <?php
+<?php
 use BlushMe\Checkout\Block\Extra as B; /* @var B $block */ $b = $block; /** @var B $b */
 use BlushMe\Checkout\Block\Extra\Item as ItemB;
 use Magento\Catalog\Model\Product as P;
@@ -24,38 +24,38 @@ if ($count = $b->items()->count()) { /** @var int $count */
 		</div>
 	</div>
 	<script type="text/javascript">
-	require(['jquery', 'slick'], function($) {
-		$(".related-crossell.bottom-products .products-related .product-items").not('.slick-initialized').slick({
-			adaptiveHeight:true,
-			arrows:true,
-			dots: false,
-			infinite: false,
-			lazyLoad: 'ondemand',
-			slidesToScroll: 4,
-			slidesToShow: 4,
-			speed: 300,
-			responsive: [
-				{breakpoint: 1280, settings: {slidesToScroll: 4, slidesToShow: 4}}
-				,{breakpoint: 960, settings: {slidesToScroll: 3, slidesToShow: 3}}
-				,{breakpoint: 768, settings: {slidesToScroll: 3, slidesToShow: 3}}
-				,{breakpoint: 600, settings: {
-					arrows:true,
-					autoplay: false,
-					autoplaySpeed: 5000,
-					dots: false,
-					slidesToScroll: 3,
-					slidesToShow: 3
-				}}
-			]
+		require(['jquery', 'slick'], function($) {
+			$(".related-crossell.bottom-products .products-related .product-items").not('.slick-initialized').slick({
+				adaptiveHeight:true,
+				arrows:true,
+				dots: false,
+				infinite: false,
+				lazyLoad: 'ondemand',
+				slidesToScroll: 6,
+				slidesToShow: 6,
+				speed: 300,
+				responsive: [
+					{breakpoint: 1280, settings: {slidesToScroll: 5, slidesToShow: 5}}
+					,{breakpoint: 960, settings: {slidesToScroll: 4, slidesToShow: 4}}
+					,{breakpoint: 768, settings: {slidesToScroll: 3, slidesToShow: 3}}
+					,{breakpoint: 600, settings: {
+						arrows:true,
+						autoplay: false,
+						autoplaySpeed: 5000,
+						dots: false,
+						slidesToScroll: 3,
+						slidesToShow: 3
+					}}
+				]
+			});
+			$('.block-title').show();
+			$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
+				var $l = $('.link-' + $(this).val());
+				if (2 <= Math.round($l.height() / parseFloat($l.css('line-height')))) {
+					$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
+				}
+			});
 		});
-		$('.block-title').show();
-		$('.klarna-extra-sell-products li.item.product.product-item').each(function() {
-			var $l = $('.link-' + $(this).val());
-			if (2 <= Math.round($l.height() / parseFloat($l.css('line-height')))) {
-				$('.klarna-extra-sell-products .products.list.items').addClass('multiline');
-			}
-		});
-	});
 	</script>
 	<?php
 }

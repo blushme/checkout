@@ -1,5 +1,9 @@
 // 2020-06-07
 #checkout {
 	margin-top: 2em;
-	.opc-wrapper {float: none; padding-right: 0; width: auto;}
+	// 2020-10-19
+	// 1) It is hidden in the original code.
+	// 2) It is overlapped with the cross-sell block if shown.
+	> .authentication-wrapper {display: none;}
+	> .opc-wrapper {float: none; padding-right: 0; width: auto;}
 }

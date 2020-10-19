@@ -1,23 +1,24 @@
 // 2020-06-07
 > .cross-sell-products-container {
-    background: #fff; text-align: center;
+	background: #fff; text-align: center;
 	> .block {
 		> .title {
 			text-align: center;
 			> #block-related-heading {font-size: 2rem !important; padding-top: 20px;}
 		}
 		> .content {
-			max-width: 600px; margin: 0 auto; width: 100%;
+			margin: 0 auto; max-width: 910px; padding: 0 22px 12px 20px; width: 100%;
 			> div.products {
 				margin-bottom: 0 !important;
-				padding-bottom: 20px;
-				button.tocart {font-size: 1.1rem; padding: 8px 15px; width: 100%;}
+				padding-bottom: 0px;
+				button.tocart {font-size: 1.1rem; padding: 6px 15px; width: 100%;}
 				> ol.products {
 					margin: 0 !important; overflow: visible;
 					&.slick-initialized {display: block;}
+					> .slick-list {@media only screen and (max-width: 767px) {margin-left: -7px;}}
 					> button {
-						&.slick-next {right: -40px;}
-						&.slick-prev {left: -40px;}
+						&.slick-next {right: -22px;}
+						&.slick-prev {left: -22px;}
 					}
 					li.slick-slide {
 						padding: 0 9px;
