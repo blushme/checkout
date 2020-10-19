@@ -14,11 +14,11 @@ rm -rf pub/static/*
 bin/magento setup:static-content:deploy \
 	--area adminhtml \
 	--theme Magento/backend \
-	-f en_US sv_SE fi_FI
+	-f en_US sv_SE fi_FI nb_NO
 bin/magento setup:static-content:deploy \
 	--area frontend \
 	--theme Codazon/fastest_seavus \
-	-f en_US sv_SE fi_FI
+	-f en_US sv_SE fi_FI nb_NO
 bin/magento maintenance:disable
 ```      
 
@@ -37,10 +37,10 @@ rm -rf pub/static/*
 bin/magento setup:static-content:deploy \
 	--area adminhtml \
 	--theme Magento/backend \
-	-f en_US sv_SE fi_FI
+	-f en_US sv_SE fi_FI nb_NO
 bin/magento setup:static-content:deploy \
 	--area frontend \
 	--theme Codazon/fastest_seavus \
-	-f en_US sv_SE fi_FI
+	-f en_US sv_SE fi_FI nb_NO
 bin/magento maintenance:disable 
 ```
