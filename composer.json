@@ -1,6 +1,6 @@
 {
 	"name": "blushme/checkout"
-	,"version": "1.0.1"
+	,"version": "1.0.2"
 	,"description": "A custom checkout module for blushme.se (Magento 2)"
 	,"type": "magento2-module"
 	,"homepage": "https://github.com/blushme/checkout"
@@ -11,7 +11,7 @@
 		,"homepage": "https://mage2.pro/users/dmitry_fedyuk"
 		,"role": "Developer"
 	}]
-	,"require": {"mage2pro/core": ">=6.5.9"}
+	,"require": {"mage2pro/core": ">=6.9.7"}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"BlushMe\\Checkout\\": ""}}
 	,"keywords": ["Magento 2", "Klarna"]
 }

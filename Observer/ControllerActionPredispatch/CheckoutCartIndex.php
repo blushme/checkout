@@ -20,5 +20,5 @@ final class CheckoutCartIndex implements ObserverInterface {
 	 * https://github.com/magento/magento2/blob/2.3.5-p1/lib/internal/Magento/Framework/App/Action/Action.php#L96-L102
 	 * @param O $o
 	 */
-	function execute(O $o) {df_redirect_to_checkout();}
+	function execute(O $o) {!df_quote()->getItems() ? df_redirect_to_home() : df_redirect_to_checkout();}
 }
