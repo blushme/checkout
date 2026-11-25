@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<!-- 2020-05-04 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+<!-- 2020-05-04 Dmitry Fedyuk https://github.com/dmitrii-fediuk
 1) "Enforce the `1column` page layout (with the gereric header and footer) for the Klarna Checkout page":
 https://github.com/blushme/core/issues/2
 2) https://github.com/magento/magento2/blob/2.3.5-p1/app/code/Magento/Theme/view/frontend/page_layout/1column.xml#L10-L14
